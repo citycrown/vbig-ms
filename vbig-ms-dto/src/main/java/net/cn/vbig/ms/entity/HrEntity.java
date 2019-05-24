@@ -3,8 +3,9 @@
  */
 package net.cn.vbig.ms.entity;
 
-import com.sun.corba.se.pept.transport.ListenerThread;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * 功能说明
+ * HR表实体
  *
  * @author 陈冕
  * @version 1.0.0
@@ -28,7 +29,7 @@ public class HrEntity implements UserDetails {
     private String username;
     private String password;
     private String remark;
-    //private List<Role> roles;
+    private List<RoleEntity> roles;
     private String userface;
     private Integer status;
 
@@ -85,7 +86,20 @@ public class HrEntity implements UserDetails {
         return enabled;
     }
 
+    @JsonIgnore
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @JsonIgnore
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
     // 账户是否未锁定
+    @JsonIgnore
     @Override
     public boolean isAccountNonLocked() {
         return getStatus() != Status.LOCKED;
@@ -128,10 +142,11 @@ public class HrEntity implements UserDetails {
     public void setUserface(String userface) {
         this.userface = userface;
     }
-    
+
+    @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<>();
-        for (Role role : roles) {
+        for (RoleEntity role : roles) {
             authorities.add(new SimpleGrantedAuthority(role.getName()));
         }
         return authorities;

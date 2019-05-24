@@ -1,2 +1,5 @@
 /.idea
 /*.iml
+/vbig-ms-service/*.iml
+/vbig-ms-backend/*.iml
+/vbig-ms-dto/*.iml
