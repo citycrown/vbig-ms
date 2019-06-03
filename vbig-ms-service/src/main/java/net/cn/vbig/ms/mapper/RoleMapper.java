@@ -3,6 +3,11 @@
  */
 package net.cn.vbig.ms.mapper;
 
+import org.apache.ibatis.annotations.Param;
+
+import javax.management.relation.Role;
+import java.util.List;
+
 /**
  * 功能说明
  *

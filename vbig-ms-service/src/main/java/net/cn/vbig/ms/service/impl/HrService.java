@@ -3,7 +3,11 @@
  */
 package net.cn.vbig.ms.service.impl;
 
+import net.cn.vbig.ms.mapper.HrMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 /**
  * HrService 用来执行登陆操作
@@ -22,6 +26,6 @@ public class HrService implements UserDetailsService {
         if (hr == null) {
             throw new UsernameNotFoundException("用户名不对");
         }
-        return hr;
+        return null;
     }
 }

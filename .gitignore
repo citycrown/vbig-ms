@@ -3,3 +3,6 @@
 /vbig-ms-service/*.iml
 /vbig-ms-backend/*.iml
 /vbig-ms-dto/*.iml
+/vbig-ms-backend/target
+/vbig-ms-dto/target
+/vbig-ms-service/target
